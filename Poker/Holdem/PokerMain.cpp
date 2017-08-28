@@ -12,7 +12,8 @@ int main() {
 	//cout << "DEBUG: deck = : " << deck << endl;
 	deck1.displayDeck();
 	deck1.shuffleDeck();
-	
+	deck1.shuffleDeck();
+	deck1.shuffleDeck();
 	
 	deck1.displayDeck();
 
