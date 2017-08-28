@@ -3,11 +3,19 @@
 //Starting point for poker program
 
 /*INCLUDES*/
-#include "Shuffle.h"
+
+#include "PokerMain.h"
 
 int main() {
+	deck deck1;
+	deck1.makeDeck();
+	//cout << "DEBUG: deck = : " << deck << endl;
+	deck1.displayDeck();
+	deck1.shuffleDeck();
+	
+	
+	deck1.displayDeck();
 
-	shuffleMain();
 	return 0;
 }
 

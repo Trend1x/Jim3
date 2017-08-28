@@ -146,11 +146,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Shuffle.cpp" />
+    <ClCompile Include="card.cpp" />
+    <ClCompile Include="deck.cpp" />
+    <ClCompile Include="shuffle.cpp" />
     <ClCompile Include="PokerMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Shuffle.h" />
+    <ClInclude Include="card.h" />
+    <ClInclude Include="deck.h" />
+    <ClInclude Include="PokerMain.h" />
+    <ClInclude Include="shuffle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
