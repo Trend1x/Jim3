@@ -22,6 +22,7 @@ public:
 	void makeDeck();
 	void displayDeck();
 	void shuffleDeck();
+	card getCard(int index);
 
 	~deck();
 };

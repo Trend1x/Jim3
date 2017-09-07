@@ -17,7 +17,7 @@ void deck::makeDeck(){
 
 void deck::displayDeck() {
 	for (int i = 0; i < DECK_SIZE; i++) {
-		cout << dk[i].getRankChar() << " of " << dk[i].getSuitName() << "s." << endl;
+		cout << dk[i].showCard() << "." << endl;
 	}
 }
 
@@ -95,5 +95,10 @@ void deck::shuffleDeck() {
 
 
 
+}
+
+card deck::getCard(int index)
+{
+	return dk[index];
 }
 
