@@ -9,7 +9,6 @@
 /*MAIN*/
 
 void shuffleMain() {
-	cout << "Still know some more" << endl;
 	
-	
+
 }
