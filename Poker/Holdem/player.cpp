@@ -18,7 +18,7 @@ card player::getHoleCard(int holeCardNum){
 }
 
 void player::showHoleCards() {
-	cout << name << " has " << holeCard[0].showCard() << " and " << holeCard[1].showCard() << endl;
+	cout << name << " has " << holeCard[0].showCard() << " \tand " << holeCard[1].showCard() << endl;
 	
 
 }

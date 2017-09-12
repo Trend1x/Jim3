@@ -3,6 +3,7 @@
 
 deck::deck(){
 	srand(time(0));	//seeds rng
+	deckPos = 0;
 }
 
 
@@ -90,15 +91,23 @@ void deck::shuffleDeck() {
 		dk[i] = tempDeck[shuffled[i]];
 	}
 
-
-
-
-
+	deckPos = 0;
 
 }
 
 card deck::getCard(int index)
 {
 	return dk[index];
+}
+
+void deck::updateDeckPos(int newPos)
+{
+	//add some error checking and bounds later
+	deckPos = newPos;
+}
+
+int deck::getDeckPos()
+{
+	return deckPos;
 }
 

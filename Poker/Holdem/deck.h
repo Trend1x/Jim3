@@ -15,6 +15,7 @@ class deck
 {
 private:
 	card dk[DECK_SIZE];
+	int deckPos;
 	
 
 public:
@@ -23,6 +24,8 @@ public:
 	void displayDeck();
 	void shuffleDeck();
 	card getCard(int index);
+	void updateDeckPos(int newPos);
+	int getDeckPos();
 
 	~deck();
 };

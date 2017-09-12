@@ -24,10 +24,10 @@
     <ClCompile Include="deck.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="shuffle.cpp">
+    <ClCompile Include="player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="player.cpp">
+    <ClCompile Include="table.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,10 +41,10 @@
     <ClInclude Include="deck.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="shuffle.h">
+    <ClInclude Include="player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="player.h">
+    <ClInclude Include="table.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
