@@ -14,6 +14,7 @@ class table
 private:
 	player seat[9];
 	deck mainDeck;
+	card hand[7];
 	card flop[3];
 	card turn;
 	card river;
@@ -41,6 +42,10 @@ public:
 	int playerCount();
 	void setPlayer(int seatNum, string playerName);
 	void playerCards(int seatNum);
+
+
+	//hand evaluations
+	void calculateHand(player current);
 
 };
 

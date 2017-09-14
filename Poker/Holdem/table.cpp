@@ -18,6 +18,11 @@ void table::playerCards(int seatNum){
 	seat[seatNum].showHoleCards();
 }
 
+void table::calculateHand(player current){
+	card hand[7];
+	
+}
+
 
 table::~table(){
 }
@@ -36,6 +41,7 @@ void table::dealFlop(){
 	burn();
 	for (int i = 0; i < 3; i++) {
 		flop[i] = mainDeck.getCard(mainDeck.getDeckPos());
+		hand[i] = flop[i];
 		mainDeck.updateDeckPos(mainDeck.getDeckPos() + 1);
 	}
 }
@@ -43,11 +49,13 @@ void table::dealFlop(){
 void table::dealTurn(){
 	burn();
 	turn = mainDeck.getCard(mainDeck.getDeckPos());
+	hand[3] = turn;
 	mainDeck.updateDeckPos(mainDeck.getDeckPos() + 1);
 }
 
 void table::dealRiver(){
 	burn();
+	hand[4] = river;
 	river = mainDeck.getCard(mainDeck.getDeckPos());
 }
 
