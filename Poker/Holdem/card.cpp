@@ -6,6 +6,13 @@ void card::setcard(int rnk, int st) {
 
 }
 
+void card::setcard(int mixedValue) {
+	rank = mixedValue % 13;
+	suit = (int)floor(mixedValue / 13);
+
+}
+
+
 std::string card::showCard(){
 	std::string temp;
 	temp += getRankChar();
@@ -20,6 +27,11 @@ std::string card::showCard(){
 char card::getRankChar() {
 	char rankchar[13] = { 'A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K' };
 	return rankchar[rank];
+}
+
+bool card::isValidCard()
+{
+	return rank >= 0 && suit >= 0;
 }
 
 std::string card::getSuitName() {

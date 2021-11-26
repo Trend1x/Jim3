@@ -4,6 +4,7 @@ table::table(){
 	numPlayers = 9;
 	mainDeck.updateDeckPos(0);
 	mainDeck.makeDeck();
+
 }
 
 int table::playerCount(){
@@ -30,73 +31,47 @@ void table::dealCards() {
 			mainDeck.updateDeckPos(mainDeck.getDeckPos() + 1);
 		}
 	}
+	for (int i = 0; i < 5; i++) {
+		board[i].setcard(-1);
+	}
+
 }
 
 void table::dealFlop(){
 	burn();
 	for (int i = 0; i < 3; i++) {
-		flop[i] = mainDeck.getCard(mainDeck.getDeckPos());
+		board[i] = mainDeck.getCard(mainDeck.getDeckPos());
 		mainDeck.updateDeckPos(mainDeck.getDeckPos() + 1);
 	}
 }
 
 void table::dealTurn(){
 	burn();
-	turn = mainDeck.getCard(mainDeck.getDeckPos());
+	board[3] = mainDeck.getCard(mainDeck.getDeckPos());
 	mainDeck.updateDeckPos(mainDeck.getDeckPos() + 1);
 }
 
 void table::dealRiver(){
 	burn();
-	river = mainDeck.getCard(mainDeck.getDeckPos());
+	board[4] = mainDeck.getCard(mainDeck.getDeckPos());
 }
 
 void table::burn(){
 	mainDeck.updateDeckPos(mainDeck.getDeckPos() + 1);
 }
 
-void table::showFlop()
-{
-	cout << endl << "THE FLOP" << endl;
-	for (int i = 0; i < 3; i++) {
-		cout << flop[i].showCard();
-		if (i != 2) {
-			cout << ", ";
-			}
-		else {
-			cout << "\n\n";
-		}
-	}
-}
 
-void table::showTurn()
-{
-	cout << "THE TURN" << endl;
-	cout << turn.showCard() << ", ";
-	for (int i = 0; i < 3; i++) {
-		cout << flop[i].showCard();
-		if (i != 2) {
+void table::showBoard(string street) { 
+	cout << street << endl;
+	int index = -1;
+	while (board[++index].isValidCard()) {
+		if (index != 0) {
 			cout << ", ";
 		}
-		else {
-			cout << "\n\n";
-		}
+		cout << board[index].showCard();
 	}
-}
+	cout << "\n\n";
 
-void table::showRiver()
-{
-	cout << "THE RIVER" << endl;
-	cout << river.showCard() << ", " << turn.showCard() << ", ";
-	for (int i = 0; i < 3; i++) {
-		cout << flop[i].showCard();
-		if (i != 2) {
-			cout << ", ";
-		}
-		else {
-			cout << "\n\n";
-		} 
-	}
 }
 
 void table::shuffleCards(int shuffleCount){

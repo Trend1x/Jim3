@@ -19,7 +19,7 @@ int main() {
 		//cout << "Player Name: " << table1.seat[i].getPlayerName() << endl;
 	}
 	
-	table1.shuffleCards(3);
+	table1.shuffleCards(5);
 	table1.dealCards();
 
 	//show player hole cards
@@ -27,11 +27,12 @@ int main() {
 		table1.playerCards(i);
 	}
 	table1.dealFlop();
-	table1.showFlop();
+	table1.showBoard("THE FLOP");
 	table1.dealTurn();
-	table1.showTurn();
+	table1.showBoard("THE TURN");
 	table1.dealRiver();
-	table1.showRiver();
+	table1.showBoard("THE RIVER");
+
 
 
 	return 0;

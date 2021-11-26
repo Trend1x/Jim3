@@ -11,9 +11,11 @@ private:
 		int suit;
 
 public:
+		bool isValidCard();
 		std::string getSuitName();
 		char getRankChar();
 		void setcard(int rnk, int st);
+		void setcard(int mixedValue);
 		std::string showCard();
 		~card();
 

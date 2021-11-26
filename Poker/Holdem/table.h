@@ -17,6 +17,7 @@ private:
 	card flop[3];
 	card turn;
 	card river;
+	card board[5];
 	int numPlayers;
 	void burn();
 	
@@ -31,9 +32,11 @@ public:
 	void dealTurn();
 	void dealRiver();
 	
-	void showFlop();
-	void showTurn();
-	void showRiver();
+	//void showFlop();
+	//void showTurn();
+	//void showRiver();
+
+	void showBoard(string street);
 
 	void shuffleCards(int shuffleCount);
 

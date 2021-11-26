@@ -16,7 +16,8 @@ class deck
 private:
 	card dk[DECK_SIZE];
 	int deckPos;
-	
+	void clumpDrop(int &currentIndex, int &halfIndex, int endPoint, card refrenceDeck[]);
+	int shuffled[DECK_SIZE];
 
 public:
 	deck();

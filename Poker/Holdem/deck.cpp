@@ -1,6 +1,8 @@
 #include "deck.h"
 
 
+
+
 deck::deck(){
 	srand(time(0));	//seeds rng
 	deckPos = 0;
@@ -12,7 +14,7 @@ deck::~deck(){
 
 void deck::makeDeck(){
 	for (int i = 0; i < DECK_SIZE; i++) {
-		dk[i].setcard((i % 13), ((int)floor(i / 13)));
+		dk[i].setcard(i);
 	}
 }
 
@@ -21,6 +23,8 @@ void deck::displayDeck() {
 		cout << dk[i].showCard() << "." << endl;
 	}
 }
+
+
 
 void deck::shuffleDeck() {
 	//fragment later
@@ -33,7 +37,7 @@ void deck::shuffleDeck() {
 	//create sub decks  half1, half2 shuffled(integers for indecies of master)
 	int shuffled[DECK_SIZE];
 	card tempDeck[DECK_SIZE];
-	
+
 	//save original deck in temp location
 	for (int i = 0; i < DECK_SIZE; i++) {
 		//cout << "DEBUG: Saving original deck index " << i << endl;
@@ -42,57 +46,31 @@ void deck::shuffleDeck() {
 	//coin flip which half goes first
 	int start = rand() % 2;
 
-
 	//shuffle halfs into shuffled 1-3 from each side alternating
 	int index = 0;
 	int upperIndex = 0;
 	int lowerIndex = halfpoint;
-	int clump = 0;
-	int clumpIndex = 0;
 	while (index < DECK_SIZE) {
-		if (index == 0) {
-			
-			if (start == 1) {
-				/*check the coinflip to see which side goes first, IF the start is 1, the lower half goes first
-				then the pattern begins with the upper and lower alternating. IF the start is 0, then jump straight
-				alternating pattern*/
-				clump = rand() % 3;
-				for (int i = 0; i <= clump; i++) {
-					shuffled[index] = lowerIndex;
-					index++;
-					lowerIndex++;
-				}//end for
-			}//end if start == 1
-		}//end if index == 0
-		
-			//upper half clump drop
-			clump = rand() % 3;
-			while((upperIndex < halfpoint)&&(clumpIndex <= clump)){
-				shuffled[index++] = upperIndex++;
-				//index++;
-				//upperIndex++;
-				clumpIndex++;
-				}
-			clumpIndex = 0;
+		if (index == 0 && start == 1) {
+			clumpDrop(index, lowerIndex, DECK_SIZE, tempDeck);
+			/*check the coinflip to see which side goes first, IF the start is 1, the lower half goes first
+			then the pattern begins with the upper and lower alternating. IF the start is 0, then jump straight
+			alternating pattern*/
+		}
+		clumpDrop(index, upperIndex, halfpoint, tempDeck);
+		clumpDrop(index, lowerIndex, DECK_SIZE, tempDeck);
 
-			//lower half clump drop
-			clump = rand() % 3;
-			while((lowerIndex < DECK_SIZE)&&(clumpIndex <= clump)){
-					shuffled[index++] = lowerIndex++;
-					//index++;
-					//lowerIndex++;
-					clumpIndex++;
-				}
-			clumpIndex = 0;
-			}
-
-	//reassign deck based on shuffled indecies of temp
-	for (int i = 0; i < DECK_SIZE; i++) {
-		dk[i] = tempDeck[shuffled[i]];
+		deckPos = 0;
 	}
+}
 
-	deckPos = 0;
-
+void deck::clumpDrop(int &currentIndex, int &halfIndex, int endPoint, card refrenceDeck[])
+{
+	int clump = rand() % 3;
+	int clumpIndex = 0;
+	while ((halfIndex < endPoint) && (clumpIndex++ <= clump)) {
+		dk[currentIndex++] = refrenceDeck[halfIndex++];
+	}
 }
 
 card deck::getCard(int index)
