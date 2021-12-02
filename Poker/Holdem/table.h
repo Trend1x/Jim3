@@ -12,14 +12,17 @@ class table
 {
 
 private:
+	static const int BOARD_SIZE = 5;
+
 	player seat[9];
 	deck mainDeck;
 	card flop[3];
 	card turn;
 	card river;
-	card board[5];
+	card board[BOARD_SIZE];
 	int numPlayers;
 	void burn();
+	void sortBoard();
 	
 
 public:
@@ -39,6 +42,9 @@ public:
 	void showBoard(string street);
 
 	void shuffleCards(int shuffleCount);
+
+	void evaluateBoard();
+
 
 	//player things
 	int playerCount();

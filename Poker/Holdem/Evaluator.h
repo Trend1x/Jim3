@@ -15,7 +15,10 @@ private:
 	card board[5];
 
 public:
-	Evaluator(card tableboard[]);
-	bool isFlushPossible();
+	Evaluator();
+
+	void preCheckBoard(card tableBoard[]);
+
+	bool isFlushPossible(card unsorted[]);
 };
 

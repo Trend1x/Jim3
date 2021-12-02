@@ -33,7 +33,7 @@ int main() {
 	table1.dealRiver();
 	table1.showBoard("THE RIVER");
 
-
+	table1.evaluateBoard();
 
 	return 0;
 }
