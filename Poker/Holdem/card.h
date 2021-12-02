@@ -13,7 +13,9 @@ private:
 public:
 		bool isValidCard();
 		std::string getSuitName();
+		int getSuitValue();
 		char getRankChar();
+		int getRankValue();
 		void setcard(int rnk, int st);
 		void setcard(int mixedValue);
 		std::string showCard();

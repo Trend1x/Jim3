@@ -29,14 +29,26 @@ char card::getRankChar() {
 	return rankchar[rank];
 }
 
+int card::getRankValue(){
+	return rank;
+}
+
+
+/**
+* Returns true if the card has a valid rank and suit
+*/
 bool card::isValidCard()
 {
-	return rank >= 0 && suit >= 0;
+	return rank >= 0 && rank < 13 && suit >= 0 && suit < 4;
 }
 
 std::string card::getSuitName() {
 	std::string suitname[4] = { "Spade" , "Heart", "Club", "Diamond" };
 	return suitname[suit];
+}
+
+int card::getSuitValue() {
+	return suit;
 }
 
 
