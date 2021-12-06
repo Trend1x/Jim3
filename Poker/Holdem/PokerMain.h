@@ -8,5 +8,4 @@
 #include "player.h"
 #include "table.h"
 
-using namespace std;
 

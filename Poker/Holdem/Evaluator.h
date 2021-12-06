@@ -5,20 +5,42 @@
 #include "card.h"
 #include "deck.h"
 #include "player.h"
+#include <deque>
 
-using namespace std;
 
+enum HandRank
+{
+    ROYAL_FLUSH,
+    STRAIGHT_FLUSH,
+    FOUR_OF_A_KIND,
+    FULL_HOUSE,
+    FLUSH,
+    STRAIGHT,
+    THREE_OF_A_KIND,
+    TWO_PAIR,
+    PAIR,
+    HIGH_CARD
+};
 
 class Evaluator
 {
 private:
-	card board[5];
+	std::deque<card> board;
+	bool boardFlushAvail;
+    bool boardStraightAvail;
+
+    bool testBoardForFlush();
+    bool testBoardForStraight();
+
+    void resortForALow();
 
 public:
 	Evaluator();
+	void setBoard(const std::deque<card>& tableBoard);
 
-	void preCheckBoard(card tableBoard[]);
-
-	bool isFlushPossible(card unsorted[]);
+	bool isFlushPossible();
+    
+    bool isStraightPossible();
+    void sortBoard();
 };
 

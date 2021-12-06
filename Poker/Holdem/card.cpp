@@ -1,5 +1,16 @@
 #include "card.h"
 
+card::card() {
+	rank = -1;
+	suit = -1;
+}
+
+card::card(int value) {
+	rank = value % 13;
+	suit = (int)floor(value / 13);
+}
+
+
 void card::setcard(int rnk, int st) {
 	rank = rnk;
 	suit = st;
@@ -12,6 +23,19 @@ void card::setcard(int mixedValue) {
 
 }
 
+void  card::operator=(const card& C) {
+	this->rank = C.rank;
+	this->suit = C.suit;
+
+}
+
+bool card::operator==(const card& C) {
+	return this->rank == C.rank && this->suit == C.suit;
+}
+
+bool card::operator!=(const card& C) {
+	return this->rank != C.rank || this->suit != C.suit;
+}
 
 std::string card::showCard(){
 	std::string temp;
@@ -25,7 +49,7 @@ std::string card::showCard(){
 
 
 char card::getRankChar() {
-	char rankchar[13] = { 'A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K' };
+	char rankchar[14] = { 'A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'};
 	return rankchar[rank];
 }
 

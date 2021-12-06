@@ -9,7 +9,7 @@ void player::setCard(int holeCardNum, card deltCard){
 	holeCard[holeCardNum] = deltCard;
 }
 
-void player::setPlayerName(string playerName){
+void player::setPlayerName(std::string playerName){
 	name = playerName;
 }
 
@@ -18,12 +18,12 @@ card player::getHoleCard(int holeCardNum){
 }
 
 void player::showHoleCards() {
-	cout << name << " has " << holeCard[0].showCard() << " \tand " << holeCard[1].showCard() << endl;
+	std::cout << name << " has " << holeCard[0].showCard() << " \tand " << holeCard[1].showCard() << std::endl;
 	
 
 }
 
-string player::getPlayerName()
+std::string player::getPlayerName()
 {
 	return name;
 }

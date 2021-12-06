@@ -2,24 +2,22 @@
 
 #include <iostream>
 #include <string>
+#include <deque>
+#include <algorithm>
 #include "card.h"
 #include "deck.h"
 #include "player.h"
-
-using namespace std;
+#include "Evaluator.h"
 
 class table
 {
 
 private:
-	static const int BOARD_SIZE = 5;
-
 	player seat[9];
 	deck mainDeck;
-	card flop[3];
-	card turn;
-	card river;
-	card board[BOARD_SIZE];
+	std::deque<card> boardDeque;
+	Evaluator eval;
+	
 	int numPlayers;
 	void burn();
 	void sortBoard();
@@ -29,27 +27,29 @@ public:
 	table();
 	~table();
 	
-	//deck things
-	void dealCards();
-	void dealFlop();
-	void dealTurn();
-	void dealRiver();
-	
-	//void showFlop();
-	//void showTurn();
-	//void showRiver();
+	//Deals hole cards to the players.
+	void dealPlayerHoleCards();
 
-	void showBoard(string street);
+	//Burn a card and then deal the indicated number of cards to the board.
+	void dealBoard(int numberOfCards);
 
+	//Displays the board following the provided message to the console.
+	void showBoard(std::string message);
+
+	//Suffles the deck the provided number of times.
 	void shuffleCards(int shuffleCount);
 
-	void evaluateBoard();
-
-
-	//player things
+	//Returns the number of players at the table.
 	int playerCount();
-	void setPlayer(int seatNum, string playerName);
-	void playerCards(int seatNum);
+
+	// Sets the name of the player in a seat at the table.
+	void setPlayer(int seatNum, std::string playerName);
+
+	// Displays the hole cards of the indicated seated player to the console
+	void showTablePlayerHoleCards(int seatNum);
+
+	//Evaluate the board.
+	void evaluateBoard();
 
 };
 

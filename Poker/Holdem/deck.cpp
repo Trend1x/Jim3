@@ -15,12 +15,14 @@ deck::~deck(){
 void deck::makeDeck(){
 	for (int i = 0; i < DECK_SIZE; i++) {
 		dk[i].setcard(i);
+		//deckList.emplace_back(i);
 	}
 }
 
 void deck::displayDeck() {
 	for (int i = 0; i < DECK_SIZE; i++) {
-		cout << dk[i].showCard() << "." << endl;
+		std::cout << dk[i].showCard() << ".\n";
+		//cout << deckList[i].showCard() << "." << endl;
 	}
 }
 
@@ -34,8 +36,7 @@ void deck::shuffleDeck() {
 	int UPPER_SIZE = halfpoint;
 	int LOWER_SIZE = DECK_SIZE - halfpoint;
 
-	//create sub decks  half1, half2 shuffled(integers for indecies of master)
-	int shuffled[DECK_SIZE];
+	//create temporary deck as a refren
 	card tempDeck[DECK_SIZE];
 
 	//save original deck in temp location
@@ -64,6 +65,8 @@ void deck::shuffleDeck() {
 	}
 }
 
+
+
 void deck::clumpDrop(int &currentIndex, int &halfIndex, int endPoint, card refrenceDeck[])
 {
 	int clump = rand() % 3;
@@ -87,5 +90,10 @@ void deck::updateDeckPos(int newPos)
 int deck::getDeckPos()
 {
 	return deckPos;
+}
+
+card deck::dealCard()
+{
+	return dk[deckPos++];
 }
 

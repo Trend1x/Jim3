@@ -4,20 +4,19 @@
 #include "card.h"
 #include <string>
 
-using namespace std;
 class player
 {
 private:
-	string name;
+	std::string name;
 	card holeCard[2];
 
 public:
 	player();
 	void setCard(int holeCardNum, card deltCard);
-	void setPlayerName(string playerName);
+	void setPlayerName(std::string playerName);
 	card getHoleCard(int holeCardNum);
 	void showHoleCards();
-	string getPlayerName();
+	std::string getPlayerName();
 
 
 	~player();
