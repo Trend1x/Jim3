@@ -22,9 +22,9 @@ int main() {
 		table1.showTablePlayerHoleCards(i);
 	}
 	table1.dealBoard(3);
-	table1.showBoard("THE FLOP");
+	//table1.showBoard("THE FLOP");
 	table1.dealBoard(1);
-	table1.showBoard("THE TURN");
+	//table1.showBoard("THE TURN");
 	table1.dealBoard(1);
 	table1.showBoard("THE RIVER");
 

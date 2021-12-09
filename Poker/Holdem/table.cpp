@@ -2,20 +2,19 @@
 
 
 table::table(){
-	numPlayers = 9;
-	mainDeck.updateDeckPos(0);
 	mainDeck.makeDeck();
-	//mainDeck.displayDeck();
+
 }
 
 table::~table() {
 }
 
 int table::playerCount(){
-	return numPlayers;
+	return seat.size();
 }
 
 void table::setPlayer(int seatNum, std::string playerName){
+	
 	seat[seatNum].setPlayerName(playerName);
 }
 
@@ -25,8 +24,8 @@ void table::showTablePlayerHoleCards(int seatNum){
 
 void table::dealPlayerHoleCards() {
 	for (int i = 0; i < 2; i++) {
-		for (int j = 0; j < numPlayers; j++) {
-			seat[j].setCard(i, mainDeck.dealCard());
+		for (auto& seated :seat) {
+			seated.dealPlayerHoleCard(mainDeck.dealCard());
 		}
 	}
 }
@@ -60,22 +59,46 @@ void table::shuffleCards(int shuffleCount){
 		mainDeck.shuffleDeck();
 	}
 	boardDeque.clear();
+	for (int j = 0; j < numPlayers; j++) {
+		seat[j].clearPlayerHoleCards();
+	}
+
+}
+
+void table::sortBoard()
+{
+	int minIndex, startScan = 0;
+	card minCard;
+	minCard.setcard(0);
+	
+	for (startScan = 0; startScan < boardDeque.size(); startScan++) {
+		minIndex = startScan;
+		minCard = boardDeque[startScan];
+
+		for (int index = startScan + 1; index < boardDeque.size(); index++) {
+			if (boardDeque[index].getRankValue() < minCard.getRankValue()) {
+				minCard = boardDeque[index];
+				minIndex = index;
+			}
+		}
+		boardDeque[minIndex] = boardDeque[startScan];
+		boardDeque[startScan] = minCard;
+	}
 }
 
 
 void table::evaluateBoard() {
 	
-	
+	sortBoard();
+	showBoard("Sorted");
 	eval.setBoard(boardDeque);
-	eval.sortBoard();
-	if (eval.isFlushPossible()) {
-		std::cout << "Possible Flush\n";
+
+	for (auto& seated : seat)
+	{
+		std::cout << "Evaluating " << seated.getPlayerName() << std::endl;
+		eval.evaluatePlayerHand(seated.getHoleCards());
+
 	}
-	if (eval.isStraightPossible()) {
-		std::cout << "Possible Straight\n";
-	}
-
-
-
-
+	
+	//showBoard("after player 1");
 }

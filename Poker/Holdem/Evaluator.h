@@ -6,6 +6,7 @@
 #include "deck.h"
 #include "player.h"
 #include <deque>
+#include <vector>
 
 
 enum HandRank
@@ -29,18 +30,22 @@ private:
 	bool boardFlushAvail;
     bool boardStraightAvail;
 
-    bool testBoardForFlush();
-    bool testBoardForStraight();
+    bool IsFlush(std::deque<card>& fullHand);
+    bool IsStraight(std::deque<card>& fullHand);
+
+    void GroupHands(std::deque<card>& fullHand);
 
     void resortForALow();
+    std::deque<card> insertHoleCards(const std::deque<card>& holeCards);
 
 public:
 	Evaluator();
 	void setBoard(const std::deque<card>& tableBoard);
-
-	bool isFlushPossible();
-    
+    bool isFlushPossible();
     bool isStraightPossible();
-    void sortBoard();
+
+    void evaluatePlayerHand(const std::deque<card>& holeCards);
+    
 };
+
 

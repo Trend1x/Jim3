@@ -13,7 +13,7 @@ class table
 {
 
 private:
-	player seat[9];
+	std::array<player, 9> seat;
 	deck mainDeck;
 	std::deque<card> boardDeque;
 	Evaluator eval;
